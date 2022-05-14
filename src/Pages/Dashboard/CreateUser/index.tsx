@@ -29,7 +29,7 @@ const CreateUser =  (): JSX.Element => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Create Account
         </Typography>
         <Formik
           validationSchema={registerSchema}
@@ -42,7 +42,6 @@ const CreateUser =  (): JSX.Element => {
               await register(values);
               history('/');
             } catch (e) {
-              console.log(e);
               enqueueSnackbar(e as string, {
                 variant: 'error'
               });

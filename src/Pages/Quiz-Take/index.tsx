@@ -1,13 +1,12 @@
 import React,{ useState, useEffect} from 'react';
 import { Grid, Paper } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
-import DashboardLayout from '../../../Components/DashboardLayout';
-import QuizList from '../../../Components/Quiz-List';
-import QuizDetails from '../../../Components/Quiz-Details';
-import { IQuizModel, IQuizResponse } from '../../../Models/quizModels';
-import showQuiz from '../../../Services/Quiz/_quiz-show';
+import DashboardLayout from '../../Components/DashboardLayout';
+import { IQuizModel } from '../../Models/quizModels';
+import Quiz from '../../Components/Quiz-Answer/_quiz';
+import showQuiz from '../../Services/Quiz/_quiz-show';
 
-export default function QuizDetailsApp(): JSX.Element {
+export default function QuizTakeApp(): JSX.Element {
     const { enqueueSnackbar } = useSnackbar();
     const [quiz, setQuiz] = useState<IQuizModel>({
         title: '',
@@ -28,10 +27,8 @@ export default function QuizDetailsApp(): JSX.Element {
     <DashboardLayout>
       <Grid item xs={12} md={8} lg={10}>
         <Paper>
-          <QuizDetails 
-            quizId={quiz.id} 
-            quizName={quiz.title}
-            quizQuestionsCount={quiz.questions.length}/>
+          <Quiz 
+            quiz={quiz}/>
         </Paper>
       </Grid>
     </DashboardLayout>

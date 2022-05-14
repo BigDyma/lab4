@@ -11,3 +11,21 @@ export interface IQuizResponse {
     title: string,
     questions_count: number
 }
+
+export interface IQuizQuestion {
+    id: number, 
+    question: string, 
+    answers: string[]
+}
+
+export interface IQuizSummary {
+    numberOfCorrectAnswers: number, 
+    numberOfQuestions: number,
+    totalPoints: number
+}
+
+export interface IQuizModel {
+    id: number, 
+    title: string, 
+    questions: IQuizQuestion[];
+}

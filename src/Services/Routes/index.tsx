@@ -1,24 +1,35 @@
 
 import NotFound from '../../Pages/NotFound';
-import Application from '../../Pages/Dashboard/Quiz-List';
+import CreateUser from '../../Pages/Dashboard/CreateUser';
+import Application from '../../Pages/Dashboard/Home';
+import QuizDetailsApp from '../../Pages/Dashboard/Quiz-Details';
+import QuizTakeApp from '../../Pages/Quiz-Take';
+
 
 export default () => [
   {
     path: '/',
     exact: true,
     component: Application,
-    error: 'Custom error for home page',
-    meta: {
-      authOnly: true
-    }
+    error: 'Custom error for home page'
   },
   {
-    path: '/Dashboard',
+    path: '/Quizzes',
     exact: true,
     component: Application,
     meta: {
       adminOnly: true // @TODO set to true
     }
+  },
+  {
+    path: '/Quiz/:id',
+    exact: true, 
+    component: QuizDetailsApp,
+  },
+  {
+      path: '/Quiz/take/:id',
+      exact: true,
+      component: QuizTakeApp
   },
   {
       path: '/CreateUser',

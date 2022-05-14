@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Reports() {
+export default function QuizList() {
   const classes = useStyles();
   const [quizzes, setQuizzes] = useState<IQuizResponse[]>([
     {

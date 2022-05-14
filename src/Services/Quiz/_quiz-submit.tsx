@@ -6,7 +6,7 @@ import { IQuizAnswer } from '../../Models/quizModels';
 
 const submitQuiz = async (quizId:number, quizAnswers: IQuizAnswer ):Promise<any> => {
     const result = await api()
-        .post<IUserResponse | IErrorResponse>(`/api/v54/quizzes/${quizId}/submit`, 
+        .post(`/api/v54/quizzes/${quizId}/submit`, 
             {data: quizAnswers})
 
     throwIfError(result);

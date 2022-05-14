@@ -7,12 +7,11 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function QuizDetails(props:{
+export default function QuizQuestions(props:{
     quizName: string, 
     quizId: number, 
     quizQuestionsCount: number
 }) {
-  
     const {quizName, quizId, quizQuestionsCount} = props;
 
   return (

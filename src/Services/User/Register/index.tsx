@@ -1,4 +1,5 @@
 import { IRegisterRequest } from '../../../Models/authModels';
+import { IUserResponse, IUserResponseId } from '../../../Models/userModels';
 import api from '../../axios.config';
 import throwIfError from '../../Helpers/throwCustomException';
 
@@ -13,11 +14,16 @@ const register = async (values: IRegisterRequest): Promise<any> => {
       surname
     }
   }
-  const data = await api().post(`/api/v54/users`, requestQuery);
+  const data:any = await api().post<IUserResponseId>(`/api/v54/users`, requestQuery);
 
   // @TO-DO set userId somewhere
 
   throwIfError(data)
+
+  if (data && data.id)
+  {
+    localStorage.setItem('userId', JSON.stringify(data.id))
+  }
 };
 
 export default register;

@@ -1,35 +1,25 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useMemo } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { GuardProvider, GuardedRoute } from 'react-router-guards';
-import requireLogin from '../Services/Guard/_requireLogin';
-import getRoutes from '../Services/Guard/_routes';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import getRoutes from "../Services/Routes";
 
-const GUARDS = [requireLogin];
 
 const RouterPages = (): JSX.Element => {
   const routes = useMemo(() => getRoutes(), []);
+  
   return (
     <BrowserRouter>
-      <GuardProvider guards={GUARDS}>
-        <Switch>
-          {routes.map(
-            ({ component, error, exact, ignoreGlobal, meta, path }, i) => (
-              <GuardedRoute
+        <Routes>
+          {routes.map((route, i) => (
+              <Route
                 key={i}
-                component={component}
-                exact={exact}
-                error={error}
-                ignoreGlobal={ignoreGlobal}
-                meta={meta}
-                path={path}
-              />
-            )
-          )}
-        </Switch>
-      </GuardProvider>
+                element={<route.component />}
+                path={route.path} 
+                />
+               ))}
+        </Routes>
     </BrowserRouter>
   );
-};
 
+}
 export default RouterPages;

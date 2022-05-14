@@ -4,7 +4,11 @@ export interface IUserResponse {
   name: string;
   surname: string;
 }
-
+export interface IUserResponseId {
+  name: string;
+  surname: string;
+  id: number;
+}
 
 export const UserUpdate = Yup.object().shape({
   userName: Yup.string().required('Please enter username')
