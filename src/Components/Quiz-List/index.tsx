@@ -50,9 +50,9 @@ export default function QuizList() {
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90 },
     { field: 'title', headerName: 'Quiz Name', width: 150 },
-    { field: 'questions_count', headerName: 'Number Of Questions', width: 180 },
+    { field: 'questions_count', headerName: 'Nr of Q', width: 180 },
     {
-      field: 'GoTo',
+      field: 'Take it',
       headerName: '',
       width: 180,
       // eslint-disable-next-line react/display-name
@@ -83,7 +83,7 @@ export default function QuizList() {
             columns={columns}
             pageSize={5}
             onCellClick={async (e) => {
-              if (e.field === 'GoTo') history(`/Quiz/${e.id}`);
+              if (e.field === 'Take it') history(`/quiz/${e.id}`);
             }}
           />
         </div>

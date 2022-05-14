@@ -2,9 +2,7 @@
 import NotFound from '../../Pages/NotFound';
 import CreateUser from '../../Pages/Dashboard/CreateUser';
 import Application from '../../Pages/Dashboard/Home';
-import QuizDetailsApp from '../../Pages/Dashboard/Quiz-Details';
-import QuizTakeApp from '../../Pages/Quiz-Take';
-
+import QuizTakeApp from "../../Pages/Quiz-Take";
 
 export default () => [
   {
@@ -14,7 +12,7 @@ export default () => [
     error: 'Custom error for home page'
   },
   {
-    path: '/Quizzes',
+    path: '/quizzes',
     exact: true,
     component: Application,
     meta: {
@@ -22,17 +20,17 @@ export default () => [
     }
   },
   {
-    path: '/Quiz/:id',
+    path: '/quiz/:id',
     exact: true, 
-    component: QuizDetailsApp,
+    component: QuizTakeApp,
   },
   {
-      path: '/Quiz/take/:id',
+      path: '/quiz/take/:id',
       exact: true,
       component: QuizTakeApp
   },
   {
-      path: '/CreateUser',
+      path: '/createUser',
       exact: true,
       component: CreateUser, 
       meta: {

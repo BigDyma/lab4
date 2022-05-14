@@ -6,7 +6,6 @@ import throwIfError from '../../Helpers/throwCustomException';
 const register = async (values: IRegisterRequest): Promise<any> => {
   const fullName = `${values.name} ${values.surname}`;
   
-  // excluding firstName and lastName and adding fullName.
   const { name, surname } = values;
   const requestQuery = {
     data: {

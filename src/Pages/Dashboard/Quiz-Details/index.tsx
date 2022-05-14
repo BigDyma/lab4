@@ -6,6 +6,7 @@ import QuizList from '../../../Components/Quiz-List';
 import QuizDetails from '../../../Components/Quiz-Details';
 import { IQuizModel, IQuizResponse } from '../../../Models/quizModels';
 import showQuiz from '../../../Services/Quiz/_quiz-show';
+import Quiz from '../../../Components/Quiz-Answer';
 
 export default function QuizDetailsApp(): JSX.Element {
     const { enqueueSnackbar } = useSnackbar();
@@ -15,7 +16,7 @@ export default function QuizDetailsApp(): JSX.Element {
         questions: []
       });
 
-      const id = parseInt(window.location.pathname.split('Quiz/')[1], 10);
+      const id = parseInt(window.location.pathname.split('quiz/')[1], 10);
       useEffect(() => {
         try {
           showQuiz(id).then((v) => setQuiz(v as IQuizModel));
@@ -28,10 +29,8 @@ export default function QuizDetailsApp(): JSX.Element {
     <DashboardLayout>
       <Grid item xs={12} md={8} lg={10}>
         <Paper>
-          <QuizDetails 
-            quizId={quiz.id} 
-            quizName={quiz.title}
-            quizQuestionsCount={quiz.questions.length}/>
+          <Quiz 
+            quiz={quiz}/>
         </Paper>
       </Grid>
     </DashboardLayout>

@@ -3,7 +3,7 @@ import { Grid, Paper } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 import DashboardLayout from '../../Components/DashboardLayout';
 import { IQuizModel } from '../../Models/quizModels';
-import Quiz from '../../Components/Quiz-Answer/_quiz';
+import Quiz from "../../Components/Quiz-Answer";
 import showQuiz from '../../Services/Quiz/_quiz-show';
 
 export default function QuizTakeApp(): JSX.Element {
@@ -14,7 +14,7 @@ export default function QuizTakeApp(): JSX.Element {
         questions: []
       });
 
-      const id = parseInt(window.location.pathname.split('Quiz/')[1], 10);
+      const id = parseInt(window.location.pathname.split('quiz/')[1], 10);
       useEffect(() => {
         try {
           showQuiz(id).then((v) => setQuiz(v as IQuizModel));
