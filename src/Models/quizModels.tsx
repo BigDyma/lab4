@@ -5,3 +5,9 @@ export interface IQuizAnswer {
     answer: string,
     user_id: number
 }
+
+export interface IQuizResponse {
+    id: number,
+    title: string,
+    questions_count: number
+}
