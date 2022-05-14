@@ -21,6 +21,14 @@ export default () => [
     }
   },
   {
+      path: '/CreateUser',
+      exact: true,
+      component: CreateUser, 
+      meta: {
+          adminOnly: false
+      }
+  },
+  {
     path: '*',
     component: NotFound,
     ignoreGlobal: true

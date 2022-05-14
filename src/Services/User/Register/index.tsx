@@ -14,6 +14,9 @@ const register = async (values: IRegisterRequest): Promise<any> => {
     }
   }
   const data = await api().post(`/api/v54/users`, requestQuery);
+
+  // @TO-DO set userId somewhere
+
   throwIfError(data)
 };
 
