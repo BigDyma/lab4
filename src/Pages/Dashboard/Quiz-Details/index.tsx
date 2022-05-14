@@ -20,7 +20,7 @@ export default function QuizDetailsApp(): JSX.Element {
       useEffect(() => {
         try {
           showQuiz(id).then((v) => setQuiz(v as IQuizModel));
-        } catch (e ) {
+        } catch (e) {
           enqueueSnackbar(e as string, { variant: 'error' });
         }
       }, []);

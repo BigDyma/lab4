@@ -77,53 +77,56 @@ const Quiz = function (props: { quiz: IQuizModel }): JSX.Element {
     ...defaultLocale,
   };
 
-  return (
-    <div className="react-quiz-container">
-      {!start && (
-        <div>
-          <h3>{quiz.title}</h3>
-          <div>
-            {appLocale.landingHeaderText.replace(
-              '<questionLength>',
-              quiz.questions?.length.toString()
+  function QuizDetailsComponent(): string | number | boolean  | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactNodeArray | React.ReactPortal {
+    return <div className='content'>
+      <h1>{quiz.title}</h1>
+      <div>
+        {appLocale.landingHeaderText.replace(
+          '<questionLength>',
+          quiz.questions?.length.toString()
+        )}
+      </div>
+      <div className="startQuizWrapper">
+        <button onClick={() => setStart(true)} className="startQuizBtn btn">
+          {appLocale.startQuizBtn}
+        </button>
+      </div>
+    </div>;
+  }
+  
+  function TakeQuizComponent(): string | number | boolean  | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactNodeArray | React.ReactPortal {
+    return <>
+      <div className='quiz-answers'>
+        <div className="quiz-header">
+          <h3 className='question'>{currentIndex + 1} {quiz.questions[currentIndex]?.question}</h3>
+          <div className="answers " key={quiz.questions[currentIndex].id}>
+            {quiz.questions[currentIndex]?.answers.map(
+              (ans, index) => (
+                <div className="question-answers" key={ans + quiz.questions[currentIndex]?.id}>
+                  <input
+                    type="radio"
+                    className="answer"
+                    name={quiz.questions[currentIndex]?.question}
+                    value={ans}
+                    onClick={(event) => handleAnswers(event)} />
+                  <label htmlFor={ans}>{ans}</label>
+                </div>
+              )
             )}
-          </div>
-          <div className="startQuizWrapper">
-            <button onClick={() => setStart(true)} className="startQuizBtn btn">
-              {appLocale.startQuizBtn}
+            <button className="next-question" onClick={() => nextQuestion()}>
+              Next
             </button>
           </div>
         </div>
-      )}
+      </div>
+    </>;
+  }
 
-      {start && !isOver && (
-           <>
-           <div className="main">
-             <div className="pass-quiz-card">
-               <h3>{currentIndex+1} {quiz.questions[currentIndex]?.question}</h3>
-               <div className="answers " key={quiz.questions[currentIndex].id}>
-                 {quiz.questions[currentIndex]?.answers.map(
-                   (ans, index) => (
-                     <div className="question-answers" key={ans+quiz.questions[currentIndex].id}>
-                       <input
-                         type="radio"
-                         name={quiz.questions[currentIndex]?.question}
-                         value={ans}
-                         onClick={(event) => handleAnswers(event)}
-                       />
-                       <label htmlFor={ans}>{ans}</label>
-                     </div>
-                   )
-                 )}
-                 <button className="start-quiz" onClick={() => nextQuestion()}>
-                   Next 
-                 </button>
-               </div>
-             </div>
-           </div>
-         </>
-      )}
 
+  return (
+    <>
+    <div className="react-quiz-container">
+      {!start && QuizDetailsComponent()}
       {start && isOver && (
         <>
         <div className="main">
@@ -142,7 +145,16 @@ const Quiz = function (props: { quiz: IQuizModel }): JSX.Element {
       </>
       )}
     </div>
+      {start && !isOver && TakeQuizComponent()
+            }
+						
+
+    </>
   );
+
+ 
+
+  
 };
 
 export default Quiz;

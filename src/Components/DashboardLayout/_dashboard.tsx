@@ -62,7 +62,7 @@ export default function Dashboard(props: Props): JSX.Element {
             noWrap
             className={classes.title}
           >
-            Dashboard
+            QUIZZZ
           </Typography>
         </Toolbar>
       </AppBar>
