@@ -15,9 +15,6 @@ export default () => [
     path: '/quizzes',
     exact: true,
     component: Application,
-    meta: {
-      adminOnly: true // @TODO set to true
-    }
   },
   {
     path: '/quiz/:id',
@@ -33,13 +30,9 @@ export default () => [
       path: '/createUser',
       exact: true,
       component: CreateUser, 
-      meta: {
-          adminOnly: false
-      }
   },
   {
     path: '*',
     component: NotFound,
-    ignoreGlobal: true
-  }
+    }
 ];

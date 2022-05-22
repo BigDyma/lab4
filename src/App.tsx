@@ -3,8 +3,8 @@ import { SnackbarProvider } from 'notistack';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import RouterPages from './Pages/router-pages';
 
+
 function App(): JSX.Element {
-  console.log("Aaa")
   return (
     <SnackbarProvider maxSnack={3}>
       <CssBaseline />

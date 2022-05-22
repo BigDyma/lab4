@@ -43,9 +43,9 @@ export default function QuizList() {
 
   const history = useNavigate();
 
-  useEffect(() => {
-    listQuizes().then((v) => setQuizzes(v as IQuizResponse[]));
-  }, []);
+  // useEffect(() => {
+  //   listQuizes().then((v) => setQuizzes(v as IQuizResponse[]));
+  // }, []);
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90 },

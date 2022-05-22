@@ -6,11 +6,10 @@ const api = (): AxiosInstance => {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'X-Access-Token': 'eba21493a6c72879e81775be6149a64f0e42836d38971108f45b4f2a244e95d2'
+      'X-Access-Token': '%change_me%'
     }
   });
 
-  // attach jwt
   instance.interceptors.request.use((config) => 
     // eslint-disable-next-line no-param-reassign
      config
